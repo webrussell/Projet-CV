@@ -56,44 +56,23 @@
             <h2 class="mb-3 text-lg font-bold"><%= @config.post %></h2>
             <p><%= h(@config.adresse).gsub("\n", "<br>").html_safe %></p>
 
-            <br />
-
             <% @articles.each do |article| %>
+                <br/>
                 <h3 class="mb-3 text-lg font-bold"><%= article.title %>:</h3>
                 <p class="m-5"><%= article.body %></p>
-                <br/>
             <% end %>
 
-            <div class='py-10'>
-                <div class=" bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
-                    <div class="p-2 bg-gray-600 text-blue-900 rounded-t">
-                        <h5 class="text-white text-2xl">Ce site internet a été entièrement réalisé en Ruby on Rails!</h5>
-                        </div>
-                        <div class="p-2 w-full h-full overflow-y-auto text-gray-100">
-                        <p class="text-justify py-2">
-                            Pour faire suite à une formation Rails, j'ai du trouver une idée de projet pour me familiariser 
-                            avec la platforme Ruby et sont framework Rails. J'ai donc créé un petit site internet qui ma permit 
-                            de mettre en pratique mes connaissance. Bien que vous ne voyer pas l'entièrter du site, j'ai mis à 
-                            ma disposition un panneau de gestion qui me permet d'ajouter facilement du contenu à cette page. 
-                            Les différente section sont les suivantes:
-                            <ul>
-                                <li> - Articles</li>
-                                <li> - Compétences</li>
-                                <li> - Configs</li>
-                                <li> - Conaissances</li>
-                                <li> - Formations</li>
-                                <li> - Langues</li>
-                                <li> - Projets</li>
-                            </ul>
-                            <br>
-                            Dans le câdre de ce projet, j'ai apris comment créé une zone de gestion complète avec login. Créé des 
-                            controlleur CRUD complet et qui respect les bonne pratique du framework Rails. N'hésiter pas à me contacter 
-                            si vous aimeriez voire le code source!
-                        </p>
-                    </div>
+            <div class=" bg-gray-700 max-h-screen shadow-2xl flex-row rounded relative">
+                <div class="p-2 bg-gray-600 text-blue-900 rounded-t">
+                    <h5 class="text-white text-2xl"><%= @rails.title %></h5>
+                </div>
+                <div class="p-2 w-full h-full overflow-y-auto text-gray-100 ">
+                    <p class="text-1xl">
+                        <%= h(@rails.body).gsub("href", 'class="btn btn-default mb-2 lg:mr-2 lg:mb-0 block" href').html_safe %>
+                    </p>
                 </div>
             </div>
-
+          
         </div>
     </div>
 
