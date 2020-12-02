@@ -1,0 +1,25 @@
+<%- if controller_name != 'sessions' %>
+  <div class="flex flex-wrap"><%= link_to "Ce connecter", new_session_path(resource_name), class: "link link-grey block py-2" %></div>
+<% end -%>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Créé un compte", new_registration_path(resource_name), class: "link link-grey block py-2" %>
+<% end -%>
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Mot de passe oublier?", new_password_path(resource_name), class: "link link-grey block py-2" %>
+<% end -%>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Vous n'avez pas reçu d'instruction pour complété votre compte?", new_confirmation_path(resource_name), class: "link link-grey block py-2" %>
+<% end -%>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Vous n'avez pas reçu d'instruction pour débloquer votre compte?", new_unlock_path(resource_name), class: "link link-grey block py-2" %>
+<% end -%>
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Ce connecter avec #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "link link-grey block py-2" %>
+  <% end -%>
+<% end -%>

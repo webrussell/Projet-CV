@@ -1,0 +1,21 @@
+<%= form_with(model: connaissance) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <div class="mb-6">
+    <%= form.label 'Conaissances', class: "label" %>
+    <%= form.text_field :nom, class: "input" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :description, class: "label" %>
+    <%= form.text_area :description, class: "input" %>
+  </div>
+
+  <div class="mb-6 flex justify-between items-center">
+    <%= form.button 'Modifier', class: "btn btn-default" %>
+
+    <% if form.object.persisted? %>
+      <%= link_to 'Supprimer', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Voulez-vous vraiement supprimer cette item?" } %>
+    <% end %>
+  </div>
+<% end %>

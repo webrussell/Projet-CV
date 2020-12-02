@@ -1,0 +1,15 @@
+<div class="container mx-auto my-8 px-4">
+    <p class="text-lg font-semibold">Nom:</p>
+  <p class="leading-normal"><%= @config.nom %></p>
+
+    <p class="text-lg font-semibold">Post:</p>
+  <p class="leading-normal"><%= @config.post %></p>
+
+    <p class="text-lg font-semibold">Adresse:</p>
+  <p class="leading-normal"><%= @config.adresse %></p>
+
+    <div class="flex items-center justify-start mt-6">
+    <%= link_to 'Modifier', edit_config_path(@config), class: "btn btn-default mr-4" %>
+    <%= link_to 'Retour', configs_path, class: "btn btn-default" %>
+  </div>
+</div>

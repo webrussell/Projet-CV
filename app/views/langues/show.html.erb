@@ -1,0 +1,15 @@
+<div class="container mx-auto my-8 px-4">
+    <p class="text-lg font-semibold">Nom:</p>
+  <p class="leading-normal"><%= @langue.nom %></p>
+
+    <p class="text-lg font-semibold">Description:</p>
+  <p class="leading-normal"><%= @langue.description %></p>
+
+    <p class="text-lg font-semibold">Note:</p>
+  <p class="leading-normal"><%= @langue.note %></p>
+
+    <div class="flex items-center justify-start mt-6">
+    <%= link_to 'Modifier', edit_langue_path(@langue), class: "btn btn-default mr-4" %>
+    <%= link_to 'Retour', langues_path, class: "btn btn-default" %>
+  </div>
+</div>

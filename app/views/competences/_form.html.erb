@@ -1,0 +1,16 @@
+<%= form_with(model: competence) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <div class="mb-6">
+    <%= form.label 'Compétences', class: "label" %>
+    <%= form.text_field :competence, class: "input" %>
+  </div>
+
+  <div class="mb-6 flex justify-between items-center">
+    <%= form.button 'Enregistrer', class: "btn btn-default" %>
+
+    <% if form.object.persisted? %>
+      <%= link_to 'Supprimer', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Vouslez-vous vraiement supprimer cette item?" } %>
+    <% end %>
+  </div>
+<% end %>

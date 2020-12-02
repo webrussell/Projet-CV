@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Patrick Simard</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag  'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+ <body class="bg-white">
+
+  <% flash.each do |type, message| %>
+    <% if type == "alert" %>
+      <div class="bg-red-500">
+        <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans"><%= message %></div>
+      </div>
+    <% end %>
+    <% if type == "notice" %>
+      <div class="bg-green-500">
+        <div class="container px-2 mx-auto py-4 text-white text-center font-medium font-sans"><%= message %></div>
+      </div>
+    <% end %>
+  <% end %>
+
+    <header class="mb-4">
+      <nav class="flex items-center justify-between flex-wrap bg-gray-100 py-3 lg:px-10 px-3 text-gray-700 border-b border-gray-400">
+        <div class="flex items-center flex-no-shrink mr-6">
+          <%= link_to "Patrick Simard", root_path, class:"link text-xl tracking-tight font-semibold" %>
+        </div>
+        <div class="block lg:hidden">
+          <button class="flex items-center px-3 py-2 border rounded text-grey border-gray-500 hover:text-gray-600 hover:border-gray-600">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+          </button>
+        </div>
+        <div class="w-full block lg:flex-1 lg:flex items-center text-center lg:text-left">
+          <div class="w-full block lg:flex lg:flex-row lg:flex-1 mt-2 lg:mt-0 text-center lg:text-left lg:justify-end">
+
+            <% if user_signed_in? %>
+              <nav class="relative select-none bg-grey lg:flex lg:items-stretch w-full">
+                <div class="lg:flex lg:items-stretch lg:flex-no-shrink lg:flex-grow">
+                  <div class="lg:flex lg:items-stretch lg:justify-end ml-auto">
+                    <%= link_to "Articles", articles_path, class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                    <%= link_to "Compétences", competences_path, class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                    <%= link_to "Configs", configs_path, class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                    <%= link_to "Conaissances", connaissances_path, class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                    <%= link_to "Formations", formations_path, class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                    <%= link_to "Langue", langues_path, class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                    <%= link_to "Projets", projets_path, class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                    <%= link_to "Déconnexion", destroy_user_session_path, :method=>'delete', class:"flex-no-grow flex-no-shrink relative py-2 px-4 leading-normal text-black no-underline flex items-center hover:bg-grey-dark"%>
+                  </div>
+                </div>
+              </nav>
+            <% else %>
+                <%= link_to "Ce connecter", new_user_session_path , class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
+            <% end %>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+class Connaissance < ApplicationRecord
+end

@@ -1,0 +1,48 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="h2">Configs</h1>
+
+    <% if @configs.exists? %>
+      <%= link_to 'Ajouter config', new_config_path, class: "btn btn-default" %>
+    <% end %>
+  </div>
+
+  <% if @configs.exists? %>
+    <div class="bg-white rounded shadow">
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Nom</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Post</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Adresse</th>
+
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @configs.each do |config| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                          <td class="p-3"><%= config.nom %></td>
+                          <td class="p-3"><%= config.post %></td>
+                          <td class="p-3"><%= config.adresse %></td>
+            
+            <td>
+              <%= link_to "Voir", config, class: "btn btn-default" %>
+              <%= link_to "Modifier", edit_config_path(config), class: "btn btn-default" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex items-center justify-between p-8">
+      <div class="flex-1 text-center">
+        <p class="text-xl font-semibold mb-4">Ajouter une nouvelle config</p>
+      <%= link_to 'Ajouter config', new_config_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+</div>

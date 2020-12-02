@@ -1,0 +1,46 @@
+<div class="container mx-auto my-8 px-4">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="h2">Conaissances</h1>
+
+    <% if @connaissances.exists? %>
+      <%= link_to 'Ajouter connaissance', new_connaissance_path, class: "btn btn-default" %>
+    <% end %>
+  </div>
+
+  <% if @connaissances.exists? %>
+    <div class="bg-white rounded shadow">
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Nom</th>
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Description</th>
+
+            <th class="p-3 uppercase text-left text-xs text-gray-700">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @connaissances.each do |connaissance| %>
+          <tr class="group border-t border-gray-400 hover:bg-gray-100">
+                          <td class="p-3"><%= connaissance.nom %></td>
+                          <td class="p-3"><%= connaissance.description %></td>
+            
+            <td>
+              <%= link_to "Voir", connaissance, class: "btn btn-default" %>
+              <%= link_to "Modifier", edit_connaissance_path(connaissance), class: "btn btn-default" %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <% else %>
+    <div class="bg-white rounded shadow flex items-center justify-between p-8">
+      <div class="flex-1 text-center">
+        <p class="text-xl font-semibold mb-4">Ajouter une nouvelle conaissances</p>
+      <%= link_to 'Ajouter conaissance', new_connaissance_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+</div>

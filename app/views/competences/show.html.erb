@@ -1,0 +1,9 @@
+<div class="container mx-auto my-8 px-4">
+    <p class="text-lg font-semibold">Compétence:</p>
+  <p class="leading-normal"><%= @competence.competence %></p>
+
+    <div class="flex items-center justify-start mt-6">
+    <%= link_to 'Modifier', edit_competence_path(@competence), class: "btn btn-default mr-4" %>
+    <%= link_to 'Retour', competences_path, class: "btn btn-default" %>
+  </div>
+</div>

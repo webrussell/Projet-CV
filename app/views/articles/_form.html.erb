@@ -1,0 +1,21 @@
+<%= form_with(model: article) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+  <div class="mb-6">
+    <%= form.label 'Titre', class: "label" %>
+    <%= form.text_field :title, class: "input" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label 'Texte', class: "label" %>
+    <%= form.rich_text_area :body %>
+  </div>
+
+  <div class="mb-6 flex justify-between items-center">
+    <%= form.button 'Enregistrer', class: "btn btn-default" %>
+
+    <% if form.object.persisted? %>
+      <%= link_to 'Supprimer', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Voulez-vous vraiement supprimer cette item?" } %>
+    <% end %>
+  </div>
+<% end %>
