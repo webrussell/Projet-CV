@@ -3,6 +3,32 @@
     <div class="left-0 bg-gray-900 p-10 text-white">
         <img src="images/photo.png" class="mb-10">
 
+        <h3 class="text-center mb-3 text-lg font-bold">LANGUES</h3>
+
+        <% @langues.each do |langue| %>
+
+            <div class="relative pt-1">
+            <div class="flex mb-2 items-center justify-between">
+                <div>
+                <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-600 bg-gray-200">
+                    <%= langue.nom %>
+                </span>
+                </div>
+                <div class="text-right">
+                <span class="text-xs font-semibold inline-block text-gray-600">
+                    <%= langue.note %>%
+                </span>
+                </div>
+            </div>
+            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                <div style="width:<%= langue.note %>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gray-500"></div>
+            </div>
+            </div>
+
+        <% end %>
+
+        <br/>
+
         <h3 class="text-center mb-3 text-lg font-bold">COMPÉTENCES</h3>
         <ul class="list-disc">
             <% @competences.each do |competence| %>
@@ -16,15 +42,6 @@
         <ul class="list-disc">
             <% @formations.each do |formation| %>
                 <li class="mb-2"><%= formation.formation %></li>
-            <% end %>
-        </ul>
-
-        <br/>
-
-        <h3 class="text-center mb-3 text-lg font-bold">LANGUES PARLÉ/ÉCRIT</h3>
-        <ul class="list-disc">
-            <% @langues.each do |langue| %>
-                <li class="mb-2"><%= langue.nom %></li>
             <% end %>
         </ul>
 
